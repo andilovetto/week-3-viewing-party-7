@@ -2,12 +2,13 @@ require 'rails_helper'
 
 RSpec.describe 'Movies Index Page' do
   before do 
-    @user1 = User.create(name: "User One", email: "user1@test.com")
+    @user1 = User.create(name: "User One", email: "user1@test.com", password: "123123123", password_confirmation: "123123123")
     i = 1
     20.times do 
       Movie.create(title: "Movie #{i} Title", rating: rand(1..10), description: "This is a description about Movie #{i}")
       i+=1
-    end 
+    end
+    session[:user_id] = @user1.id 
   end 
 
   it 'shows all movies' do 

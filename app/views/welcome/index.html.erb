@@ -1,7 +1,9 @@
 <%= button_to "Create New User", register_path, method: :get %>
+<%  unless session[:user_id] == nil %>
 <section class='existing-users'>
     <p>Existing Users: </p>
     <% @users.each do |user| %>
-        <li><%= link_to user.email, user_path(user.id) %></li>
+        <li><%= link_to user.email %></li>
     <% end %>
+<% end %>
 </section>
